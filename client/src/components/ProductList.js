@@ -1,4 +1,4 @@
-import { Card, Pagination } from "antd";
+import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 
 const ProductList = ({ data }) => {
