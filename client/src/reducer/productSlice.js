@@ -1,15 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   products: [],
+  fields: [],
   error: null,
   cached: {},
   length: 0,
-  total: 0
+  total: 0,
+  price: '',
+  category: '',
 };
 
 const productSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState,
   reducers: {
     getAllProducts: (state, action) => {
@@ -26,11 +29,27 @@ const productSlice = createSlice({
     },
     totalValue: (state, action) => {
       state.total = action.payload;
-    }
-
-
+    },
+    setPrice: (state, action) => {
+      state.price = action.payload;
+    },
+    setCategory: (state, action) => {
+      state.category = action.payload;
+    },
+    setFields: (state, action) => {
+      state.fields = action.payload;
+    },
   },
 });
 
-export const { getAllProducts, errorHandler, cachedAPI, productsLength, totalValue } = productSlice.actions;
+export const {
+  getAllProducts,
+  errorHandler,
+  cachedAPI,
+  productsLength,
+  totalValue,
+  setCategory,
+  setPrice,
+  setFields
+} = productSlice.actions;
 export default productSlice.reducer;

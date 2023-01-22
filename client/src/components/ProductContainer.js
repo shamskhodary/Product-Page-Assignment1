@@ -8,11 +8,8 @@ import { Pagination } from "antd";
 
 
 const ProductContainer = () => {
-  const [category, setCategory] = useState('');
-  const [price, setPrice] = useState('')
   const products = useSelector((state) => state.products);
-  const { length } = useSelector((state) => state)
-  const { total } = useSelector((state) => state)
+  const { price, category } = useSelector((state) => state)
   const dispatch = useDispatch();
 
 
@@ -39,9 +36,7 @@ const ProductContainer = () => {
 
   return (
     <>
-      {products && <FilterBar length={length} total={total}
-        setPrice={setPrice}
-        setCategory={setCategory} />}
+      {products && <FilterBar />}
 
       <div className="product-page">
         {products && products.map((e) => <ProductList data={e} key={e.id} />)}
