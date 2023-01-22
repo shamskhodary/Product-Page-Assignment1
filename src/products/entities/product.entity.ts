@@ -36,7 +36,7 @@ export class Product extends Model<Product> {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   category: string;
 
