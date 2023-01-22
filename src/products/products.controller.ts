@@ -9,7 +9,7 @@ export class ProductsController {
   constructor(private productService: ProductsService) {}
 
   @Get()
-  async findAll(@Query() dto?: QueryProductDto): Promise<Product[]> {
+  async findAll(@Query() dto?: QueryProductDto): Promise<object> {
     const allProducts = await this.productService.findAll(
       dto.category,
       dto.sort,

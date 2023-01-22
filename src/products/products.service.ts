@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { col, fn } from 'sequelize';
 import { Product } from './entities/product.entity';
+
 @Injectable()
 export class ProductsService {
   constructor(@InjectModel(Product) private productModel: typeof Product) {}
 
-  async findAll(category?: string, sort?: string): Promise<Product[]> {
+  async findAll(category?: string, sort?: string): Promise<object> {
     const whereObj = {};
     let order: any = [];
 
@@ -24,6 +26,11 @@ export class ProductsService {
       order,
     });
 
-    return products;
+    const totalValue = products.reduce(
+      (acc, product) => acc + product.price,
+      0,
+    );
+
+    return { products, count: totalValue, length: products.length };
   }
 }
