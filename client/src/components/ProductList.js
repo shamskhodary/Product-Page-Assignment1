@@ -1,5 +1,4 @@
 import { Card } from "antd";
-import Meta from "antd/es/card/Meta";
 
 const ProductList = ({ data }) => {
   return (
@@ -7,9 +6,9 @@ const ProductList = ({ data }) => {
       <Card
         hoverable
         style={{ width: 240, }}
-        cover={<img alt="example" src={data.image} />}
-      >
-        <Meta title={data.title} description="$price" />
+        title={data.title} bordered={false}>
+        <img src={data.image} alt="example" style={{ width: '100%', marginBottom: '1rem' }} />
+        {"$" + data.price}
       </Card>
     </div>
   );
