@@ -4,6 +4,8 @@ const initialState = {
   products: [],
   error: null,
   cached: {},
+  length: 0,
+  total: 0
 };
 
 const productSlice = createSlice({
@@ -19,8 +21,16 @@ const productSlice = createSlice({
     cachedAPI: (state, action) => {
       state.cached.products = action.payload;
     },
+    productsLength: (state, action) => {
+      state.length = action.payload;
+    },
+    totalValue: (state, action) => {
+      state.total = action.payload;
+    }
+
+
   },
 });
 
-export const { getAllProducts, errorHandler, cachedAPI } = productSlice.actions;
+export const { getAllProducts, errorHandler, cachedAPI, productsLength, totalValue } = productSlice.actions;
 export default productSlice.reducer;

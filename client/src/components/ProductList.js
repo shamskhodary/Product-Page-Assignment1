@@ -9,7 +9,7 @@ const ProductList = ({ data }) => {
         style={{ width: 240, }}
         cover={<img alt="example" src={data.image} />}
       >
-        <Meta title={data.title} description="$price" />
+        <Meta title={data.title} description={"$" + data.price} />
       </Card>
     </div>
   );

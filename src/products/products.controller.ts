@@ -21,4 +21,9 @@ export class ProductsController {
 
     return allProducts;
   }
+
+  @Get('/categories')
+  async findCategories() {
+    return await this.productService.Categories();
+  }
 }

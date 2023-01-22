@@ -1,58 +1,56 @@
-import { Dropdown, Button } from "antd";
-import { CaretDownOutlined } from '@ant-design/icons';
-import PriceMenu from "./priceMenu";
+import { Menu } from "antd";
 import Title from "antd/es/typography/Title";
-
-const items = [
-  {
-    label: "men's clothing",
-    key: '0',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    label: "women's clothing",
-    key: '1',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    label: 'jewelry',
-    key: '3',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    label: 'electronics',
-    key: '4',
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
-const FilterBar = () => {
+const FilterBar = ({ length, total, setCategory }) => {
+  const [fields, setFields] = useState([]);
+
+  const items = [
+    {
+      label: 'Category',
+      children: fields
+    }
+  ]
+
+  useEffect(() => {
+    const allCategories = async () => {
+      const response = await axios.get(`http://localhost:3001/api/v1/products/categories`);
+      setFields(response.data)
+    }
+    allCategories()
+  }, [])
+
+  const handleFilter = (key) => {
+    const selected = fields.find((e) => +e['key'] === +key)
+    setCategory(selected['label']);
+  }
+
+  const items2 = [
+    {
+      label: "Price",
+      children: [
+        {
+          label: "highest to lowest",
+          key: '0',
+        },
+        {
+          label: "lowest to highest",
+          key: '1',
+        },
+      ]
+    },
+
+  ]
   return (
     <>
       <div className="filter-bar">
-        <Title level={5} style={{ margin: 0 }}>Total Products:</Title>
-        <Dropdown menu={{ items }} trigger={['click']}>
-          <Button
-            type="button"
-            onClick={(e) => e.preventDefault()}
-            style={{
-              border: '1px solid grey',
-              backgroundColor: 'transparent',
-              cursor: 'pointer',
-            }}
-          >
-            Category
-            <CaretDownOutlined />
-          </Button>
-        </Dropdown>
-        <PriceMenu />
-        <Title level={5} style={{ margin: 0 }}>Current products:</Title>
+        <Title level={5} style={{ margin: 0 }}>Total Products:  {length}</Title>
+        <Menu onClick={(e) => handleFilter(e.key)} mode="horizontal" items={items} />
+        <Menu mode="horizontal" items={items2} />
+
+        <Title level={5} style={{ margin: 0 }}>Total price: {total}</Title>
       </div >
     </>
 
