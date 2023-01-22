@@ -23,7 +23,7 @@ export class Product extends Model<Product> {
   title: string;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.TEXT,
     allowNull: false,
   })
   image: string;

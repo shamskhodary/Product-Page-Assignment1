@@ -7,6 +7,7 @@ const initialState = {
   cached: {},
   length: 0,
   total: 0,
+  page: 0,
   price: '',
   category: '',
 };
@@ -39,6 +40,9 @@ const productSlice = createSlice({
     setFields: (state, action) => {
       state.fields = action.payload;
     },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
   },
 });
 
@@ -50,6 +54,7 @@ export const {
   totalValue,
   setCategory,
   setPrice,
-  setFields
+  setFields,
+  setPage
 } = productSlice.actions;
 export default productSlice.reducer;
