@@ -9,6 +9,7 @@ import { Pagination } from "antd";
 
 const ProductContainer = () => {
   const [category, setCategory] = useState('');
+  const [price, setPrice] = useState('')
   const products = useSelector((state) => state.products);
   const { length } = useSelector((state) => state)
   const { total } = useSelector((state) => state)
@@ -20,7 +21,8 @@ const ProductContainer = () => {
       try {
         const response = await axios.get(`http://localhost:3001/api/v1/products`, {
           params: {
-            category: category
+            category: category,
+            sort: price
           }
         });
         dispatch(getAllProducts(response.data.products));
@@ -33,11 +35,13 @@ const ProductContainer = () => {
     }
     allProducts()
 
-  }, [dispatch, category]);
+  }, [dispatch, category, price]);
 
   return (
     <>
-      {products && <FilterBar length={length} total={total} data={products} setCategory={setCategory} />}
+      {products && <FilterBar length={length} total={total}
+        setPrice={setPrice}
+        setCategory={setCategory} />}
 
       <div className="product-page">
         {products && products.map((e) => <ProductList data={e} key={e.id} />)}

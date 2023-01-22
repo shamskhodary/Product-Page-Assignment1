@@ -4,7 +4,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-const FilterBar = ({ length, total, setCategory }) => {
+const items2 = [
+  {
+    label: "Price",
+    children: [
+      {
+        label: "Highest to lowest",
+        key: '0',
+      },
+      {
+        label: "Lowest to highest",
+        key: '1',
+      },
+    ]
+  },
+]
+const FilterBar = ({ length, total, setCategory, setPrice }) => {
   const [fields, setFields] = useState([]);
 
   const items = [
@@ -27,28 +42,20 @@ const FilterBar = ({ length, total, setCategory }) => {
     setCategory(selected['label']);
   }
 
-  const items2 = [
-    {
-      label: "Price",
-      children: [
-        {
-          label: "highest to lowest",
-          key: '0',
-        },
-        {
-          label: "lowest to highest",
-          key: '1',
-        },
-      ]
-    },
-
-  ]
+  const handlePrice = (val) => {
+    if (+val === 0) {
+      setPrice('highest')
+    }
+    if (+val === 1) {
+      setPrice('lowest')
+    }
+  }
   return (
     <>
       <div className="filter-bar">
         <Title level={5} style={{ margin: 0 }}>Total Products:  {length}</Title>
         <Menu onClick={(e) => handleFilter(e.key)} mode="horizontal" items={items} />
-        <Menu mode="horizontal" items={items2} />
+        <Menu mode="horizontal" items={items2} onClick={(e) => handlePrice(e.key)} />
 
         <Title level={5} style={{ margin: 0 }}>Total price: {total}</Title>
       </div >
