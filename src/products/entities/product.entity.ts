@@ -39,4 +39,14 @@ export class Product extends Model<Product> {
     allowNull: false,
   })
   category: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  createdAt: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  updatedAt: string;
 }
