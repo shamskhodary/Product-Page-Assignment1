@@ -40,7 +40,7 @@ const ProductContainer = () => {
   const handlePagination = (e) => {
     dispatch(setPage(e))
   }
-
+  console.log(products)
   return (
     <>
       {error && <Alert message={error} type="error" />}

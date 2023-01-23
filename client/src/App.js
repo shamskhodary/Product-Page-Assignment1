@@ -1,8 +1,8 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import ProductContainer from './components/ProductContainer';
-const App = () => {
+import Navbar from "./components/Navbar";
+import ProductContainer from "./components/ProductContainer";
 
+
+const App = () => {
   return (
     <div className='App'>
       <Navbar />

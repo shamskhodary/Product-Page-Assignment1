@@ -1,6 +1,6 @@
 ## **Product Page - Assignment 1** 
 
-### This application is a mobile-friendly app that sells a list of paginated products from clothing, books to instrumental tools. The user can browse different pages moving from page 1 to page 5. He can also filter them by category or price from the highest to the lowest or vice versa.
+This application is a mobile-friendly app that sells a list of paginated products from clothing, books to instrumental tools. The user can browse different pages moving from page 1 to page 5. He can also filter them by category or price from the highest to the lowest or vice versa.
 <br>
 
 ### **Checking Performance and Accessability Using Browser Tool : Lighthouse** 
@@ -19,5 +19,8 @@
 
 - *State Management*: The state of the application is managed using Redux Toolkit, an easy tool to handle the states of the application providing powerful features, including actions, reducers, and middleware.
 
-- *AntDesign*: a popular library for React to build high-quality UI components. It improves user experience and accessability.
+- *AntDesign*: A popular library for React to build high-quality UI components. It improves user experience and accessability.
 
+- *Caching data*: Using built-in caching storage feature of NestJS to improve performance and reduce the number of requests to the server.
+
+- *Handling Errors*: Handling 404 Error page using react router dom, if the user requests a non-existing routes, a page will appear and tell him of the error.

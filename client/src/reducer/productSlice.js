@@ -4,7 +4,6 @@ const initialState = {
   products: [],
   fields: [],
   error: null,
-  cached: {},
   length: 0,
   total: 0,
   page: 0,
@@ -21,9 +20,6 @@ const productSlice = createSlice({
     },
     errorHandler: (state, action) => {
       state.error = action.payload;
-    },
-    cachedAPI: (state, action) => {
-      state.cached.products = action.payload;
     },
     productsLength: (state, action) => {
       state.length = action.payload;
