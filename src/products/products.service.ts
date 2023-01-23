@@ -49,7 +49,7 @@ export class ProductsService {
         0,
       );
 
-      await this.cacheManager.set('cached-data', { key: 22 }, 10);
+      await this.cacheManager.set('cached-data', { key: 22 });
       await this.cacheManager.del('cached-data');
       await this.cacheManager.reset();
       // const cachedData = await this.cacheManager.get('cached-data');

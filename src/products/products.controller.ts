@@ -14,8 +14,6 @@ import { ProductsService } from './products.service';
 export class ProductsController {
   constructor(private productService: ProductsService) {}
 
-  @CacheKey('route')
-  @CacheTTL(60)
   @Get()
   async findAll(
     @Query() dto?: QueryProductDto,
