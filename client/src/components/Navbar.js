@@ -5,7 +5,8 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <Title level={4}>Avion</Title>
+        <Title className="heading"
+          level={4}>Avion</Title>
       </header>
       <div className="image">
         <Title

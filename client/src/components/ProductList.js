@@ -8,9 +8,9 @@ const ProductList = ({ data }) => {
         style={{ width: 240, }}
         title={data.title} bordered={false}>
         <img src={data.image} alt="example" style={{
-          width: '100px',
-          margin: "0 auto",
-          height: "170px",
+          width: '80%',
+          margin: "auto",
+          height: "200px",
           display: "block",
           marginBottom: '1rem'
         }} />
