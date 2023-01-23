@@ -30,14 +30,13 @@ header {
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  border: 1px solid gray;
 }
 
 .product-page {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
 }
@@ -50,4 +49,20 @@ header {
   display: flex;
   justify-content: center;
   margin: 0.5rem 0 1.5rem 0;
+}
+
+/* small screen mobile */
+@media (max-width: 767.98px) {
+  .filter-bar {
+    gap: 0.7rem;
+  }
+
+  .filter-bar h5 {
+    font-size: 0.78rem;
+  }
+
+  .product-page h4 {
+    font-size: 0.9rem;
+  }
+
 }

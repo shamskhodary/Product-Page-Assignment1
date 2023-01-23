@@ -5,7 +5,8 @@ import FilterBar from "./FilterBar";
 import { useDispatch, useSelector } from "react-redux";
 import { errorHandler, getAllProducts, productsLength, setPage, totalValue } from "../reducer/productSlice";
 import { Pagination } from "antd";
-
+import Typography from "antd/es/typography/Typography";
+const { Title } = Typography
 
 const ProductContainer = () => {
   const products = useSelector((state) => state.products);
@@ -45,6 +46,7 @@ const ProductContainer = () => {
 
       <div className="product-page">
         {products && products.map((e) => <ProductList data={e} key={e.id} />)}
+        {!products.length && <Title level={4} style={{ margin: '0 auto' }}>No Products Found</Title>}
       </div>
       <div className="pagination">
         <Pagination defaultCurrent={1} total={50} onChange={handlePagination} />

@@ -60,7 +60,7 @@ const FilterBar = () => {
     <>
       <div className="filter-bar">
         <Title level={5} style={{ margin: 0 }}>
-          Total Products: {length}
+          Total products: {length}
         </Title>
         <Menu
           onClick={(e) => handleFilter(e.key)}
