@@ -1,6 +1,6 @@
 ## **Product Page - Assignment 1** 
 
-### This application is a mobile-friendly app that sells a list of paginated products from clothing, books to instrumental tools. The user can browse different pages moving from page 1 to page 5. He can also filter them by category or price from the highest to the lowest or vice versa.
+This application is a mobile-friendly app that sells a list of paginated products from clothing, books to instrumental tools. The user can browse different pages moving from page 1 to page 5. He can also filter them by category or price from the highest to the lowest or vice versa.
 <br>
 
 ### **Checking Performance and Accessability Using Browser Tool : Lighthouse** 

@@ -1,13 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  CacheInterceptor,
+  Controller,
+  Get,
+  Inject,
+  CACHE_MANAGER,
+} from '@nestjs/common';
+import { CacheKey, CacheTTL } from '@nestjs/common/cache';
 import { Query } from '@nestjs/common/decorators';
 import { PaginationParams } from './dto/params.dto';
 import { QueryProductDto } from './dto/product.dto';
 import { ProductsService } from './products.service';
-
 @Controller('products')
 export class ProductsController {
   constructor(private productService: ProductsService) {}
 
+  @CacheKey('route')
+  @CacheTTL(60)
   @Get()
   async findAll(
     @Query() dto?: QueryProductDto,
