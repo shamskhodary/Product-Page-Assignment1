@@ -14,7 +14,7 @@ const ProductContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const cacheKey = `products`;
+    const cacheKey = `products-${category}-${price}-${page}`;
     const expiration = localStorage.getItem(`${cacheKey}-expiration`);
 
     if (!expiration || new Date() >= new Date(expiration)) {
