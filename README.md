@@ -21,6 +21,6 @@ This application is a mobile-friendly app that sells a list of paginated product
 
 - *AntDesign*: A popular library for React to build high-quality UI components. It improves user experience and accessability.
 
-- *Caching data*: Cached data in localStorage, then checked if it already exits using extraReducer function.
+- *Caching data*: Cached data in localStorage, then checked if it already exists using extraReducer function.
 
 - *Handling Errors*: Handling 404 Error page using react router dom, if the user requests a non-existing routes, a page will appear and tell him of the error.
