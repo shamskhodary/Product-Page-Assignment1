@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  products: [],
+  products: null,
   fields: [],
   error: null,
-  length: 0,
-  total: 0,
   page: 0,
+  expire: null,
   price: '',
   category: '',
 };
@@ -16,16 +15,21 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     getAllProducts: (state, action) => {
+      const { category, price, page } = action.payload;
+
+      const cacheKey = `products-${category}-${price}-${page}`
+      const expiration = new Date();
+
+      expiration.setMinutes(expiration.getMinutes() + 30); // data expired after 30 minutes
+      localStorage.setItem(cacheKey, JSON.stringify(action.payload));
+      localStorage.setItem(`${cacheKey}-expiration`, expiration);
+
+
       state.products = action.payload;
+      state.expire = expiration.toISOString();
     },
     errorHandler: (state, action) => {
       state.error = action.payload;
-    },
-    productsLength: (state, action) => {
-      state.length = action.payload;
-    },
-    totalValue: (state, action) => {
-      state.total = action.payload;
     },
     setPrice: (state, action) => {
       state.price = action.payload;
@@ -40,7 +44,21 @@ const productSlice = createSlice({
       state.page = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase('GET_ALL_PRODUCTS', (state, action) => {
+      const { category, price, page } = action.payload;
+
+      const cacheKey = `products-${category}-${price}-${page}`;
+      const expiration = localStorage.getItem(`${cacheKey}-expiration`);
+
+      if (expiration && new Date() < new Date(expiration)) {
+        state.products = JSON.parse(localStorage.getItem(cacheKey));
+        state.expire = expiration.toISOString();
+      }
+    })
+  }
 });
+
 
 export const {
   getAllProducts,

@@ -5,8 +5,8 @@ import axios from 'axios';
 import { setPrice, setCategory, setFields } from '../reducer/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const FilterBar = () => {
-  const { total, length, fields } = useSelector((state) => state);
+const FilterBar = ({ length, count }) => {
+  const { fields } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const items = [
@@ -74,7 +74,7 @@ const FilterBar = () => {
         />
 
         <Title level={5} style={{ margin: 0 }}>
-          Total price: {total}
+          Total price: {count}
         </Title>
       </div>
     </>
