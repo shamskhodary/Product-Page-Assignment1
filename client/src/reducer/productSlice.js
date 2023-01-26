@@ -63,9 +63,6 @@ const productSlice = createSlice({
 export const {
   getAllProducts,
   errorHandler,
-  cachedAPI,
-  productsLength,
-  totalValue,
   setCategory,
   setPrice,
   setFields,
