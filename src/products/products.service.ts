@@ -7,10 +7,7 @@ import { Cache } from 'cache-manager';
 
 @Injectable()
 export class ProductsService {
-  constructor(
-    @InjectModel(Product) private productModel: typeof Product,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {}
+  constructor(@InjectModel(Product) private productModel: typeof Product) {}
 
   async findAll(
     category?: string,
@@ -48,13 +45,6 @@ export class ProductsService {
         (acc, product) => acc + product.price,
         0,
       );
-
-      await this.cacheManager.set('cached-data', { key: 22 });
-      await this.cacheManager.del('cached-data');
-      await this.cacheManager.reset();
-      // const cachedData = await this.cacheManager.get('cached-data');
-
-      // console.log(cachedData);
 
       return { products, count: totalValue, length: products.length };
     } catch (error) {

@@ -1,4 +1,4 @@
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import config from './core/dbConnection';
@@ -14,9 +14,6 @@ import { ProductsModule } from './products/products.module';
       logging: false,
     }),
     ConfigModule.forRoot({ isGlobal: true }),
-    CacheModule.register({
-      isGlobal: true,
-    }),
     ProductsModule,
   ],
 })
